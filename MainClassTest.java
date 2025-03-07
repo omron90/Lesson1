@@ -1,12 +1,15 @@
 import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.fail;
 
 public class MainClassTest{
     @Test
-    public void testGetClassNumber(){
+    public void testGetClassString(){
         MainClass mainClass = new MainClass();
-        int actualResult = mainClass.getClassNumber();
-        assertTrue(actualResult > 45, "Ожидалось, что значение будет больше 45, но получено: " + actualResult);
+        String actualResult = mainClass.getClassString();
+        boolean containsSubstring = actualResult.toLowerCase().contains("hallo");
+        if (!containsSubstring){
+            fail("Строка должна содержать подстроку 'hallo' или 'Hallo', но вместо этого получена: " + actualResult);
+        }
     }
 }
